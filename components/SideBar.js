@@ -1,20 +1,22 @@
 import { forwardRef } from "react";
 import Link from "next/link";
-import { HomeIcon, CreditCardIcon, UserIcon } from "@heroicons/react/24/solid";
+import {
+  HomeIcon,
+  UserIcon,
+  BuildingStorefrontIcon,
+  UserPlusIcon,
+  MegaphoneIcon,
+} from "@heroicons/react/24/solid";
 import { useRouter } from "next/router";
 
 const SideBar = forwardRef(({ showNav }, ref) => {
   const router = useRouter();
 
   return (
-    <div ref={ref} className="fixed w-56 h-full bg-white shadow-sm">
-      <div className="flex justify-center mt-6 mb-14">
+    <div ref={ref} className="fixed w-56 h-full bg-emerald-400 shadow-sm">
+      <div className="flex justify-center mt-6 mb-2">
         <picture>
-          <img
-            className="w-32 h-auto"
-            src="/ferox-transparent.png"
-            alt="company logo"
-          />
+          <img className="w-32 h-32" src="/12.png" alt="company logo" />
         </picture>
       </div>
 
@@ -22,9 +24,9 @@ const SideBar = forwardRef(({ showNav }, ref) => {
         <Link href="/">
           <div
             className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${
-              router.pathname == "/"
-                ? "bg-orange-100 text-orange-500"
-                : "text-gray-400 hover:bg-orange-100 hover:text-orange-500"
+              router.pathname == "/billing"
+                ? "bg-white"
+                : "text-white hover:bg-white hover:text-emerald-400"
             }`}
           >
             <div className="mr-2">
@@ -35,35 +37,99 @@ const SideBar = forwardRef(({ showNav }, ref) => {
             </div>
           </div>
         </Link>
-        <Link href="/account">
+        <Link href="/usuarios">
           <div
             className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${
-              router.pathname == "/account"
-                ? "bg-orange-100 text-orange-500"
-                : "text-gray-400 hover:bg-orange-100 hover:text-orange-500"
+              router.pathname == "/billing"
+                ? "bg-white"
+                : "text-white hover:bg-white hover:text-emerald-400"
             }`}
           >
             <div className="mr-2">
               <UserIcon className="h-5 w-5" />
             </div>
             <div>
-              <p>Account</p>
+              <p>Usuarios</p>
             </div>
           </div>
         </Link>
-        <Link href="/billing">
+        <Link href="/tiendas">
           <div
             className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${
               router.pathname == "/billing"
-                ? "bg-orange-100 text-orange-500"
-                : "text-gray-400 hover:bg-orange-100 hover:text-orange-500"
+                ? "bg-white"
+                : "text-white hover:bg-white hover:text-emerald-400"
             }`}
           >
             <div className="mr-2">
-              <CreditCardIcon className="h-5 w-5" />
+              <BuildingStorefrontIcon className="h-5 w-5" />
             </div>
             <div>
-              <p>Billing</p>
+              <p>Tiendas</p>
+            </div>
+          </div>
+        </Link>
+        <Link href="/administradores">
+          <div
+            className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${
+              router.pathname == "/billing"
+                ? "bg-white"
+                : "text-white hover:bg-white hover:text-emerald-400"
+            }`}
+          >
+            <div className="mr-2">
+              <UserPlusIcon className="h-5 w-5" />
+            </div>
+            <div>
+              <p>Administradores</p>
+            </div>
+          </div>
+        </Link>
+        <Link href="/publicidad">
+          <div
+            className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${
+              router.pathname == "/billing"
+                ? "bg-white"
+                : "text-white hover:bg-white hover:text-emerald-400"
+            }`}
+          >
+            <div className="mr-2">
+              <MegaphoneIcon className="h-5 w-5" />
+            </div>
+            <div>
+              <p>Publicidad</p>
+            </div>
+          </div>
+        </Link>
+        <Link href="/pedidos">
+          <div
+            className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${
+              router.pathname == "/billing"
+                ? "bg-white"
+                : "text-white hover:bg-white hover:text-emerald-400"
+            }`}
+          >
+            <div className="mr-2">
+              <UserIcon className="h-5 w-5" />
+            </div>
+            <div>
+              <p>Pedidos</p>
+            </div>
+          </div>
+        </Link>
+        <Link href="/Usuarios">
+          <div
+            className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${
+              router.pathname == "/billing"
+                ? "bg-white"
+                : "text-white hover:bg-white hover:text-emerald-400"
+            }`}
+          >
+            <div className="mr-2">
+              <UserIcon className="h-5 w-5" />
+            </div>
+            <div>
+              <p>Ayudas</p>
             </div>
           </div>
         </Link>
