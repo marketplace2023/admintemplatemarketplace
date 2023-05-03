@@ -1,4 +1,4 @@
-import { forwardRef } from "react";
+import { forwardRef, LegacyRef } from "react";
 import Link from "next/link";
 import {
   HomeIcon,
@@ -9,11 +9,15 @@ import {
 } from "@heroicons/react/24/solid";
 import { useRouter } from "next/router";
 
-const SideBar = forwardRef(({ showNav }, ref) => {
+type SidBarProps = {
+  showNav: boolean
+}
+
+const SideBar = forwardRef<HTMLDivElement, SidBarProps>(({ showNav }, ref) => {
   const router = useRouter();
 
   return (
-    <div ref={ref} className="fixed w-56 h-full bg-emerald-400 shadow-sm">
+    <div ref={ref} className="fixed z-20 w-56 h-full bg-emerald-400 shadow-sm">
       <div className="flex justify-center mt-6 mb-2">
         <picture>
           <img className="w-32 h-32" src="/12.png" alt="company logo" />
@@ -23,11 +27,10 @@ const SideBar = forwardRef(({ showNav }, ref) => {
       <div className="flex flex-col">
         <Link href="/">
           <div
-            className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${
-              router.pathname == "/billing"
-                ? "bg-white"
-                : "text-white hover:bg-white hover:text-emerald-400"
-            }`}
+            className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${router.pathname == "/billing"
+              ? "bg-slate-400"
+              : "text-white hover:bg-white hover:text-emerald-400"
+              }`}
           >
             <div className="mr-2">
               <HomeIcon className="h-5 w-5" />
@@ -39,11 +42,10 @@ const SideBar = forwardRef(({ showNav }, ref) => {
         </Link>
         <Link href="/usuarios">
           <div
-            className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${
-              router.pathname == "/billing"
-                ? "bg-white"
-                : "text-white hover:bg-white hover:text-emerald-400"
-            }`}
+            className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${router.pathname == "/billing"
+              ? "bg-white"
+              : "text-white hover:bg-white hover:text-emerald-400"
+              }`}
           >
             <div className="mr-2">
               <UserIcon className="h-5 w-5" />
@@ -55,11 +57,10 @@ const SideBar = forwardRef(({ showNav }, ref) => {
         </Link>
         <Link href="/tiendas">
           <div
-            className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${
-              router.pathname == "/billing"
-                ? "bg-white"
-                : "text-white hover:bg-white hover:text-emerald-400"
-            }`}
+            className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${router.pathname == "/billing"
+              ? "bg-white"
+              : "text-white hover:bg-white hover:text-emerald-400"
+              }`}
           >
             <div className="mr-2">
               <BuildingStorefrontIcon className="h-5 w-5" />
@@ -71,11 +72,10 @@ const SideBar = forwardRef(({ showNav }, ref) => {
         </Link>
         <Link href="/administradores">
           <div
-            className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${
-              router.pathname == "/billing"
-                ? "bg-white"
-                : "text-white hover:bg-white hover:text-emerald-400"
-            }`}
+            className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${router.pathname == "/billing"
+              ? "bg-white"
+              : "text-white hover:bg-white hover:text-emerald-400"
+              }`}
           >
             <div className="mr-2">
               <UserPlusIcon className="h-5 w-5" />
@@ -87,11 +87,10 @@ const SideBar = forwardRef(({ showNav }, ref) => {
         </Link>
         <Link href="/publicidad">
           <div
-            className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${
-              router.pathname == "/billing"
-                ? "bg-white"
-                : "text-white hover:bg-white hover:text-emerald-400"
-            }`}
+            className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${router.pathname == "/billing"
+              ? "bg-white"
+              : "text-white hover:bg-white hover:text-emerald-400"
+              }`}
           >
             <div className="mr-2">
               <MegaphoneIcon className="h-5 w-5" />
@@ -103,11 +102,10 @@ const SideBar = forwardRef(({ showNav }, ref) => {
         </Link>
         <Link href="/pedidos">
           <div
-            className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${
-              router.pathname == "/billing"
-                ? "bg-white"
-                : "text-white hover:bg-white hover:text-emerald-400"
-            }`}
+            className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${router.pathname == "/billing"
+              ? "bg-white"
+              : "text-white hover:bg-white hover:text-emerald-400"
+              }`}
           >
             <div className="mr-2">
               <UserIcon className="h-5 w-5" />
@@ -119,11 +117,10 @@ const SideBar = forwardRef(({ showNav }, ref) => {
         </Link>
         <Link href="/Usuarios">
           <div
-            className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${
-              router.pathname == "/billing"
-                ? "bg-white"
-                : "text-white hover:bg-white hover:text-emerald-400"
-            }`}
+            className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${router.pathname == "/billing"
+              ? "bg-white"
+              : "text-white hover:bg-white hover:text-emerald-400"
+              }`}
           >
             <div className="mr-2">
               <UserIcon className="h-5 w-5" />

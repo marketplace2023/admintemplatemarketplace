@@ -13,9 +13,8 @@ import Link from "next/link";
 export default function TopBar({ showNav, setShowNav }) {
   return (
     <div
-      className={`fixed w-full h-16 flex justify-between items-center transition-all duration-[400ms] ${
-        showNav ? "pl-56" : ""
-      }`}
+      className={`fixed bg-white z-10 w-full h-16 flex justify-between items-center transition-all duration-[400ms] ${showNav ? "pl-56" : ""
+        }`}
     >
       <div className="pl-4 md:pl-16">
         <Bars3CenterLeftIcon
@@ -37,7 +36,7 @@ export default function TopBar({ showNav, setShowNav }) {
             leaveFrom="transform scale-100"
             leaveTo="transform scale-95"
           >
-            <Popover.Panel className="absolute -right-16 sm:right-4 z-50 mt-2 bg-white shadow-sm rounded max-w-xs sm:max-w-sm w-screen">
+            <Popover.Panel className=" -right-16 sm:right-4 z-50 mt-2 bg-white shadow-sm rounded max-w-xs sm:max-w-sm w-screen">
               <div className="relative p-3">
                 <div className="flex justify-between items-center w-full">
                   <p className="text-gray-700 font-medium">Notifications</p>
