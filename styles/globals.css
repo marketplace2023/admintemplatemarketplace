@@ -5,3 +5,8 @@
 body {
   @apply bg-white;
 }
+
+.nextui-c-grJsex-ikUaMfZ-css {
+  max-width: none !important;
+  width: 800px;
+}
