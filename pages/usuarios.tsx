@@ -36,7 +36,7 @@ const Usuarios = () => {
 
   return (
     <div>
-      <p className="text-gray-700 text-3xl mb-10 font-bold">Usuarios</p>
+      <p className="text-gray-700 text-3xl mb-10 font-bold">Cliente</p>
       <Container>
         <Formik
           validationSchema={usuarioFormSchema}
@@ -55,14 +55,14 @@ const Usuarios = () => {
                     hidden={true}
                     title="Subir Foto"
                   />
-                  <FaUserCircle size={180} color="#34D39C" />
+                  <FaUserCircle size={280} color="#34D39C" />
                   <p className="m-auto text-center cursor-pointer hover:text-blue-600">
                     Subir Foto
                   </p>
                 </label>
               </div>
               <div className=" w-full p-6 ">
-                <div className="grid grid-cols-2 gap-10">
+                <div className="grid grid-cols-3 gap-10">
                   <Field
                     rounded
                     type="text"
@@ -90,6 +90,22 @@ const Usuarios = () => {
                     helperText={errors?.roles}
                     helperColor={errors?.roles ? "error" : null}
                   />
+                  <Field
+                      rounded
+                      type="password"
+                      name="adminPassword"
+                      as={Input}
+                      bordered={true}
+                      label="Contraseña"
+                      placeholder="Ingrese contraseña"
+                      color="primary"
+                      required
+                      helperText={errors?.adminPassword}
+                      helperColor={errors?.adminPassword ? "error" : null}
+                    />
+                  </div>
+                                  
+                  <div className="grid grid-cols-2 gap-10 pt-9">
                   <Field
                     rounded
                     type="text"
@@ -142,6 +158,7 @@ const Usuarios = () => {
                     helperText={errors?.emailAddress}
                     helperColor={errors?.emailAddress ? "error" : null}
                   />
+                
                 </div>
                 <div className="grid grid-cols-1 gap-10 pt-9">
                   <Field

@@ -59,7 +59,7 @@ const Tiendas = () => {
                                         hidden={true}
                                         title="Subir Foto"
                                     />
-                                    <FaUserCircle size={180} color="#34D39C" />
+                                    <FaUserCircle size={280} color="#34D39C" />
                                     <p className="m-auto text-center cursor-pointer hover:text-blue-600">
                                         Subir Foto
                                     </p>
@@ -136,7 +136,8 @@ const Tiendas = () => {
                                         helperColor={errors?.emailAddress ? "error" : null}
                                     />
                                 </div>
-                                <div className="grid grid-cols-1 gap-10 pt-9">
+                                <div className="grid grid-cols-2 gap-10 pt-9">
+                                    
                                     <Field
                                         rounded
                                         bordered={true}
@@ -149,7 +150,22 @@ const Tiendas = () => {
                                         required
                                         helperText={errors?.storeDireccion}
                                         helperColor={errors?.storeDireccion ? "error" : null}
-                                    />
+                                    />   
+                                    <Field
+                                    rounded
+                                    type="password"
+                                    name="adminPassword"
+                                    as={Input}
+                                    bordered={true}
+                                    label="Contraseña"
+                                    placeholder="Ingrese contraseña"
+                                    color="primary"
+                                    required
+                                    helperText={errors?.adminPassword}
+                                    helperColor={errors?.adminPassword ? "error" : null}
+                                    /> 
+                                </div>                            
+                                <div className="grid grid-cols-1 gap-10 pt-9">
                                     <Field
                                         rounded
                                         bordered={true}
@@ -206,7 +222,7 @@ const Tiendas = () => {
                                         helperColor={errors?.twitter ? "error" : null}
                                     />
                                 </div>
-                                <pre>{JSON.stringify(values, null, 2)}</pre>
+                                {/* <pre>{JSON.stringify(values, null, 2)}</pre> */}
                             </div>
                         </div>
                     )}
