@@ -91,21 +91,21 @@ const Usuarios = () => {
                     helperColor={errors?.roles ? "error" : null}
                   />
                   <Field
-                      rounded
-                      type="password"
-                      name="adminPassword"
-                      as={Input}
-                      bordered={true}
-                      label="Contraseña"
-                      placeholder="Ingrese contraseña"
-                      color="primary"
-                      required
-                      helperText={errors?.adminPassword}
-                      helperColor={errors?.adminPassword ? "error" : null}
-                    />
-                  </div>
-                                  
-                  <div className="grid grid-cols-2 gap-10 pt-9">
+                    rounded
+                    type="password"
+                    name="adminPassword"
+                    as={Input}
+                    bordered={true}
+                    label="Contraseña"
+                    placeholder="Ingrese contraseña"
+                    color="primary"
+                    required
+                    helperText={errors?.adminPassword}
+                    helperColor={errors?.adminPassword ? "error" : null}
+                  />
+                </div>
+
+                <div className="grid grid-cols-2 gap-10 pt-9">
                   <Field
                     rounded
                     type="text"
@@ -158,7 +158,7 @@ const Usuarios = () => {
                     helperText={errors?.emailAddress}
                     helperColor={errors?.emailAddress ? "error" : null}
                   />
-                
+
                 </div>
                 <div className="grid grid-cols-1 gap-10 pt-9">
                   <Field

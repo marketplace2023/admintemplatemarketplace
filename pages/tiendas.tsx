@@ -106,7 +106,6 @@ const Tiendas = () => {
                                         helperText={errors?.whatsapp}
                                         helperColor={errors?.whatsapp ? "error" : null}
                                     />
-
                                 </div>
                                 <div className="grid grid-cols-2 gap-10 pt-9">
                                     <Field
@@ -137,7 +136,6 @@ const Tiendas = () => {
                                     />
                                 </div>
                                 <div className="grid grid-cols-2 gap-10 pt-9">
-                                    
                                     <Field
                                         rounded
                                         bordered={true}
@@ -150,21 +148,21 @@ const Tiendas = () => {
                                         required
                                         helperText={errors?.storeDireccion}
                                         helperColor={errors?.storeDireccion ? "error" : null}
-                                    />   
+                                    />
                                     <Field
-                                    rounded
-                                    type="password"
-                                    name="adminPassword"
-                                    as={Input}
-                                    bordered={true}
-                                    label="Contraseña"
-                                    placeholder="Ingrese contraseña"
-                                    color="primary"
-                                    required
-                                    helperText={errors?.adminPassword}
-                                    helperColor={errors?.adminPassword ? "error" : null}
-                                    /> 
-                                </div>                            
+                                        rounded
+                                        type="password"
+                                        name="adminPassword"
+                                        as={Input}
+                                        bordered={true}
+                                        label="Contraseña"
+                                        placeholder="Ingrese contraseña"
+                                        color="primary"
+                                        required
+                                        helperText={errors?.adminPassword}
+                                        helperColor={errors?.adminPassword ? "error" : null}
+                                    />
+                                </div>
                                 <div className="grid grid-cols-1 gap-10 pt-9">
                                     <Field
                                         rounded
@@ -194,7 +192,6 @@ const Tiendas = () => {
                                         helperText={errors?.facebbok}
                                         helperColor={errors?.facebbok ? "error" : null}
                                     />
-
                                     <Field
                                         rounded
                                         bordered={true}

@@ -5,7 +5,7 @@ import useAdmin from "../hooks/useAdmin";
 import { Field, Formik } from "formik";
 import { Input } from "@nextui-org/react";
 import { FaUserCircle } from "react-icons/fa";
-import { Table } from "../components/admin/Table";
+import { Table } from "../components/Table";
 import { adminDefaultValues } from "../components/admin/adminHelper";
 import { BiEditAlt, BiTrash } from "react-icons/bi";
 
@@ -43,6 +43,7 @@ const columns = [
 
 const administradores = () => {
   const [searchValue, setSearchValue] = useState('');
+  const isSubmitting = false;
 
   const handleSubmit = (values, { setSubmitting }) => {
     alert(JSON.stringify(values, null, 2));
@@ -111,7 +112,7 @@ const administradores = () => {
                       helperText={errors?.adminphone}
                       helperColor={errors?.adminphone ? "error" : null}
                     />
-                    
+
                     <Field
                       rounded
                       type="text"
@@ -173,6 +174,15 @@ const administradores = () => {
               </div>
             )}
           </Formik>
+          <div className="flex justify-end mt-4">
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="text-white bg-emerald-400 hover:bg-emerald-600 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            >
+              Enviar
+            </button>
+          </div>
           <Table
             columns={columns}
             items={admins.map(admin => ({
@@ -182,6 +192,8 @@ const administradores = () => {
             }))}
           />
         </div>
+
+
       </Container>
 
     </div>
