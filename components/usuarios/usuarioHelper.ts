@@ -9,6 +9,7 @@ export type UsuarioFormValues = {
     emailAddress: string;
     addressUser: string;
     roles: string;
+    userPassword: string,
 };
 export const usuarioDefaultValues: UsuarioFormValues = {
     userId: 0,
@@ -20,4 +21,5 @@ export const usuarioDefaultValues: UsuarioFormValues = {
     emailAddress: '',
     addressUser: '',
     roles: '',
+    userPassword: '',
 }

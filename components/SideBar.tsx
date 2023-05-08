@@ -51,7 +51,7 @@ const SideBar = forwardRef<HTMLDivElement, SidBarProps>(({ showNav }, ref) => {
               <UserIcon className="h-5 w-5" />
             </div>
             <div>
-              <p>Usuarios</p>
+              <p>Cliente</p>
             </div>
           </div>
         </Link>

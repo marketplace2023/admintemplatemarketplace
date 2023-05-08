@@ -8,4 +8,29 @@ export interface Usuario {
     emailAddress: string,
     addressUser: string,
     roles: string,
-}
+    userPassword: string,
+};
+export interface Admin {
+    adminId: number,
+    adminFoto: string,
+    adminLogin: string,
+    adminName: string,
+    adminLastName: string,
+    adminphone: string,
+    adminEmailAddress: string,
+    adminPassword: string
+};
+export interface Tienda {
+    storeId: number;
+    storeFoto: string;
+    storeRif: string;
+    storeName: string;
+    storeDireccion: string;
+    phone: string;
+    emailAddress: string;
+    descripcionCorta: string;
+    facebbok: string;
+    instagram: string;
+    twitter: string;
+    whatsapp: string;
+};

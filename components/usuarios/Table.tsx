@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Table as NextUITable } from "@nextui-org/react";
 import { BiEditAlt, BiTrash } from "react-icons/bi";
 import { Usuario } from '../../types/interfaces';
-import { Modal, Button, Text, Input, Row, Checkbox } from "@nextui-org/react";
 import { ModalUsuarioEditar } from "./ModalUsuarioEditar";
 
 type TableProps = {
