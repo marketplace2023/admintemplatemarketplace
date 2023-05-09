@@ -10,8 +10,8 @@ import {
 import { useRouter } from "next/router";
 
 type SidBarProps = {
-  showNav: boolean
-}
+  showNav: boolean;
+};
 
 const SideBar = forwardRef<HTMLDivElement, SidBarProps>(({ showNav }, ref) => {
   const router = useRouter();
@@ -27,10 +27,11 @@ const SideBar = forwardRef<HTMLDivElement, SidBarProps>(({ showNav }, ref) => {
       <div className="flex flex-col">
         <Link href="/">
           <div
-            className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${router.pathname == "/billing"
-              ? "bg-slate-400"
-              : "text-white hover:bg-white hover:text-emerald-400"
-              }`}
+            className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${
+              router.pathname == "/billing"
+                ? "bg-slate-400"
+                : "text-white hover:bg-white hover:text-emerald-400"
+            }`}
           >
             <div className="mr-2">
               <HomeIcon className="h-5 w-5" />
@@ -42,10 +43,11 @@ const SideBar = forwardRef<HTMLDivElement, SidBarProps>(({ showNav }, ref) => {
         </Link>
         <Link href="/usuarios">
           <div
-            className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${router.pathname == "/billing"
-              ? "bg-white"
-              : "text-white hover:bg-white hover:text-emerald-400"
-              }`}
+            className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${
+              router.pathname == "/billing"
+                ? "bg-white"
+                : "text-white hover:bg-white hover:text-emerald-400"
+            }`}
           >
             <div className="mr-2">
               <UserIcon className="h-5 w-5" />
@@ -57,10 +59,11 @@ const SideBar = forwardRef<HTMLDivElement, SidBarProps>(({ showNav }, ref) => {
         </Link>
         <Link href="/tiendas">
           <div
-            className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${router.pathname == "/billing"
-              ? "bg-white"
-              : "text-white hover:bg-white hover:text-emerald-400"
-              }`}
+            className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${
+              router.pathname == "/billing"
+                ? "bg-white"
+                : "text-white hover:bg-white hover:text-emerald-400"
+            }`}
           >
             <div className="mr-2">
               <BuildingStorefrontIcon className="h-5 w-5" />
@@ -72,10 +75,11 @@ const SideBar = forwardRef<HTMLDivElement, SidBarProps>(({ showNav }, ref) => {
         </Link>
         <Link href="/administradores">
           <div
-            className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${router.pathname == "/billing"
-              ? "bg-white"
-              : "text-white hover:bg-white hover:text-emerald-400"
-              }`}
+            className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${
+              router.pathname == "/billing"
+                ? "bg-white"
+                : "text-white hover:bg-white hover:text-emerald-400"
+            }`}
           >
             <div className="mr-2">
               <UserPlusIcon className="h-5 w-5" />
@@ -87,10 +91,11 @@ const SideBar = forwardRef<HTMLDivElement, SidBarProps>(({ showNav }, ref) => {
         </Link>
         <Link href="/publicidad">
           <div
-            className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${router.pathname == "/billing"
-              ? "bg-white"
-              : "text-white hover:bg-white hover:text-emerald-400"
-              }`}
+            className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${
+              router.pathname == "/billing"
+                ? "bg-white"
+                : "text-white hover:bg-white hover:text-emerald-400"
+            }`}
           >
             <div className="mr-2">
               <MegaphoneIcon className="h-5 w-5" />
@@ -102,10 +107,11 @@ const SideBar = forwardRef<HTMLDivElement, SidBarProps>(({ showNav }, ref) => {
         </Link>
         <Link href="/pedidos">
           <div
-            className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${router.pathname == "/billing"
-              ? "bg-white"
-              : "text-white hover:bg-white hover:text-emerald-400"
-              }`}
+            className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${
+              router.pathname == "/billing"
+                ? "bg-white"
+                : "text-white hover:bg-white hover:text-emerald-400"
+            }`}
           >
             <div className="mr-2">
               <UserIcon className="h-5 w-5" />
@@ -115,12 +121,13 @@ const SideBar = forwardRef<HTMLDivElement, SidBarProps>(({ showNav }, ref) => {
             </div>
           </div>
         </Link>
-        <Link href="/Usuarios">
+        <Link href="/ayudas">
           <div
-            className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${router.pathname == "/billing"
-              ? "bg-white"
-              : "text-white hover:bg-white hover:text-emerald-400"
-              }`}
+            className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${
+              router.pathname == "/billing"
+                ? "bg-white"
+                : "text-white hover:bg-white hover:text-emerald-400"
+            }`}
           >
             <div className="mr-2">
               <UserIcon className="h-5 w-5" />

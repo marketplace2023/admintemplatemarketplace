@@ -1,28 +1,35 @@
-import React, { useEffect } from "react";
 import dynamic from "next/dynamic";
-const Piechart = dynamic(() => import("react-apexcharts"), { ssr: false });
+const ApexChart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
-const PieChart = () => {
-  useEffect(() => {
-    const options = {
-      series: [44, 55, 13, 43, 22],
-      chart: {
-        type: "pie",
-        height: 180,
-        width: "100%",
+export const PieChart = () => {
+  const options = {
+    series: [30, 30, 40],
+    chart: {
+      type: "donut",
+    },
+    labels: ["Realizadas", "Pendientes", "Rechazadas"],
+    responsive: [
+      {
+        breakpoint: 200,
+        options: {
+          chart: {
+            width: 200,
+          },
+          legend: {
+            position: "bottom",
+          },
+        },
       },
-      labels: ["Apple", "Mango", "Banana", "Orange", "Grapes"],
-    };
+    ],
+  };
 
-    const chart = new ApexCharts(document.querySelector("#chart"), options);
-    chart.render();
-
-    return () => {
-      chart.destroy();
-    };
-  }, []);
-
-  return <div id="chart" />;
+  return (
+    <ApexChart
+      options={options}
+      series={options.series}
+      type="donut"
+      height={180}
+    />
+  );
 };
-
 export default PieChart;
