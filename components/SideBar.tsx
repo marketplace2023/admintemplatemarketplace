@@ -31,6 +31,13 @@ const Menus: MenuItem[] = [
     title: "Cliente",
     icon: <UserIcon className="h-5 w-5" />,
     path: "/usuarios",
+    subMenuItems: [
+      {
+        title: "Cliente",
+        icon: <UserIcon className="h-5 w-5" />,
+        path: "/usuarios/create",
+      },
+    ],
   },
   {
     title: "Tiendas",
@@ -77,43 +84,44 @@ const SideBar = forwardRef<HTMLDivElement, SidBarProps>(({ showNav }, ref) => {
 
       <div className="flex flex-col">
         {Menus.map((menuItem, index) => (
-          <div
-            key={index}
-            className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${
-              router.pathname == "/billing"
-                ? "bg-slate-400"
-                : "text-white hover:bg-white hover:text-emerald-400"
-            }`}
-          >
-            <div className="mr-2">{menuItem.icon}</div>
-            <div>
-              <p>{menuItem.title}</p>
-            </div>
-            {menuItem.subMenuItems && (
-              <ChevronDownIcon
-                className={`h-5 w-5 ml-auto ${
-                  subMenuOpen ? "transform rotate-180" : ""
-                }`}
-                onClick={handleSubMenuClick}
-              />
-            )}
-            {menuItem.subMenuItems && subMenuOpen && (
-              <ul>
-                {menuItem.subMenuItems.map((subMenuItem, idx) => (
-                  <li
-                    key={idx}
-                    className="pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors"
-                  >
-                    <div className="mr-2">{subMenuItem.icon}</div>
+          <Link key={index} href={menuItem.path}>
+            <div
+              className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${
+                router.pathname == "/billing"
+                  ? "bg-slate-400"
+                  : "text-white hover:bg-white hover:text-emerald-400"
+              }`}
+            >
+              <div className="mr-2">{menuItem.icon}</div>
+              <div>
+                <p>{menuItem.title}</p>
+              </div>
+              {menuItem.subMenuItems && (
+                <ChevronDownIcon
+                  className={`h-5 w-5 ml-auto ${
+                    subMenuOpen ? "transform rotate-180" : ""
+                  }`}
+                  onClick={handleSubMenuClick}
+                />
+              )}
+              {menuItem.subMenuItems && subMenuOpen && (
+                <ul>
+                  {menuItem.subMenuItems.map((subMenuItem, idx) => (
+                    <li
+                      key={idx}
+                      className="pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors"
+                    >
+                      <div className="mr-2">{subMenuItem.icon}</div>
 
-                    <div>
-                      <p>{subMenuItem.title}</p>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
+                      <div>
+                        <p>{subMenuItem.title}</p>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </Link>
         ))}
       </div>
     </div>
