@@ -1,6 +1,8 @@
 import React from "react";
 import Container from "../components/usuarios/Container";
 import { Card, Input, Text } from "@nextui-org/react";
+import { Form as FormikForm, Formik, Field } from "formik";
+
 const publicidad = () => {
   return (
     <div>
@@ -8,8 +10,9 @@ const publicidad = () => {
         Seccion Publicitaria
       </p>
       <Container>
-        <label>
-          <input type="file" name="" hidden="false" />
+        
+          {/* <label>
+       <input type="file" name="" hidden="false" />
           <Card variant="bordered">
             <Card.Body className="h-48">
               <Text className=" flex justify-center">
@@ -18,7 +21,7 @@ const publicidad = () => {
             </Card.Body>
           </Card>
         </label>
-        <div className=" grid grid-cols-3 gap-10 mt-10">
+         <div className=" grid grid-cols-3 gap-10 mt-10">
           <Input
             rounded
             bordered="true"
@@ -48,7 +51,7 @@ const publicidad = () => {
           >
             Crear Publicidad
           </button>
-        </div>
+        </div> */}
       </Container>
     </div>
   );

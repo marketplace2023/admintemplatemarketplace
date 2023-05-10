@@ -8,16 +8,19 @@ import { FaUserCircle } from "react-icons/fa";
 import { Table } from "../components/Table";
 import { adminDefaultValues } from "../components/admin/adminHelper";
 import { BiEditAlt, BiTrash } from "react-icons/bi";
+import Image from 'next/image';
 
 const columns = [
   {
     headerName: 'FOTO', field: 'adminFoto', renderCell: (admin) =>
 
       <div className="relative h-10 w-10">
-        <img
+        <Image
           className="h-full w-full rounded-full object-cover object-center"
           src={admin.adminFoto}
           alt="login"
+          width={100}
+          height={100}
         />
       </div>
   },
@@ -41,7 +44,7 @@ const columns = [
   }
 ]
 
-const administradores = () => {
+const Administradores = () => {
   const [searchValue, setSearchValue] = useState('');
   const isSubmitting = false;
 
@@ -200,4 +203,4 @@ const administradores = () => {
   );
 };
 
-export default administradores;
+export default Administradores;

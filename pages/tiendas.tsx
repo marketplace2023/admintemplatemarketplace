@@ -2,13 +2,52 @@ import React from "react";
 import { useState } from 'react';
 import { Input } from "@nextui-org/react";
 import { FaUserCircle } from "react-icons/fa";
-import { Table } from "../components/tiendas/Table";
+import { Table } from "../components/Table";
 import Container from "../components/usuarios/Container";
 import useStore from "../hooks/useStore";
 import * as Yup from 'yup';
 import { Form as FormikForm, Formik, Field } from "formik";
 import { tiendaDefaultValues } from "../components/tiendas/tiendaHelper";
+import { BiEditAlt, BiTrash } from "react-icons/bi";
+import Image from 'next/image';
 
+const columns = [
+    {
+      headerName: 'FOTO', field: 'storeFoto', renderCell: (tienda) =>
+  
+        <div className="relative h-10 w-10">
+          <Image
+            className="h-full w-full rounded-full object-cover object-center"
+            src={tienda.storeFoto}
+            alt="login"
+            width={100}
+            height={100}
+          />
+        </div>
+    },
+    { headerName: 'RIF', field: 'storeRif' },
+    { headerName: 'NOMBRE', field: 'storeName' },
+    { headerName: 'DIRECCIÓN', field: 'storeDireccion'},
+    { headerName: 'CORREO ELECTRÓNICO', field: 'emailAddress' },
+    { headerName: 'TELÉFONO LOCAL', field: 'phone' },
+    { headerName: 'WHATSAPP', field: 'whatsapp' },
+    { headerName: 'FACEBOOK', field: 'facebook' },
+    { headerName: 'TWITTER', field: 'twitter' },
+    { headerName: 'INSTAGRAM', field: 'instagram' },
+    {
+      headerName: 'ACTIONS', field: 'actions', renderCell: (admin) => <div className="flex">
+        <div
+          className="cursor-pointer text-blue-600 hover:text-blue-200"
+        // onClick={() => setSelectedUser(admin)}
+        >
+          <BiEditAlt style={{ fontSize: '2em', marginLeft: '20px' }} />
+        </div>
+        <div className="cursor-pointer text-red-600 hover:text-red-200">
+          <BiTrash style={{ fontSize: '2em', marginLeft: '20px' }} />
+        </div>
+      </div>
+    }
+  ]
 const tiendaFormSchema = Yup.object().shape({
     storeFoto: Yup.string().required("Campo requerido"),
     storeRif: Yup.string().required("Campo requerido").min(8, "El nombre del login tiene que tener al menos un carácter").max(100, "El nombre del login no puede superar los 100 carácteres"),
@@ -18,7 +57,7 @@ const tiendaFormSchema = Yup.object().shape({
     whatsapp: Yup.string().matches(/^[+0-9]+$/, ("Debe ser +000000000000")).required("Campo requerido").min(11, ("El número tiene que ser mayor a 11")),
     emailAddress: Yup.string().email("El email no tiene un formato válido").required("Campo requerido"),
     descripcionCorta: Yup.string().required("Campo requerido").min(3, "La dirección tiene que tener al menos un carácter").max(100, "la dirección no puede superar los 100 carácteres"),
-    facebbok: Yup.string().required("Campo requerido"),
+    facebook: Yup.string().required("Campo requerido"),
     instagram: Yup.string().required("Campo requerido"),
     twitter: Yup.string().required("Campo requerido"),
 
@@ -184,13 +223,13 @@ const Tiendas = () => {
                                         bordered={true}
                                         type="text"
                                         as={Input}
-                                        name="facebbok"
+                                        name="facebook"
                                         label="Facebook"
                                         placeholder="Ingrese Facebook"
                                         color="primary"
                                         required
-                                        helperText={errors?.facebbok}
-                                        helperColor={errors?.facebbok ? "error" : null}
+                                        helperText={errors?.facebook}
+                                        helperColor={errors?.facebook ? "error" : null}
                                     />
                                     <Field
                                         rounded
@@ -236,9 +275,14 @@ const Tiendas = () => {
                 </div>
             </Container >
             <div className=" mt-10">
-                <Table
-                    tiendas={tiendas}
-                />
+            <Table
+            columns={columns}
+            items={ tiendas.map(tienda => ({
+              ... tienda,
+              key:  tienda.storeId,
+              actions: 'actions',
+            }))}
+          /> 
             </div>
         </div >
     );
