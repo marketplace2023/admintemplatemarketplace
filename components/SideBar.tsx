@@ -1,4 +1,4 @@
-import { forwardRef, LegacyRef } from "react";
+import { forwardRef, LegacyRef, useState } from "react";
 import Link from "next/link";
 import {
   HomeIcon,
@@ -6,15 +6,66 @@ import {
   BuildingStorefrontIcon,
   UserPlusIcon,
   MegaphoneIcon,
+  ChevronDownIcon,
 } from "@heroicons/react/24/solid";
 import { useRouter } from "next/router";
 
+type MenuItem = {
+  title: string;
+  icon: JSX.Element;
+  subMenuItems?: MenuItem[];
+  path: string;
+};
+
 type SidBarProps = {
-  showNav: boolean
-}
+  showNav: boolean;
+};
+
+const Menus: MenuItem[] = [
+  {
+    title: "Home",
+    icon: <HomeIcon className="h-5 w-5" />,
+    path: "/",
+  },
+  {
+    title: "Cliente",
+    icon: <UserIcon className="h-5 w-5" />,
+    path: "/usuarios",
+  },
+  {
+    title: "Tiendas",
+    icon: <BuildingStorefrontIcon className="h-5 w-5" />,
+    path: "/tiendas",
+  },
+  {
+    title: "Administradores",
+    icon: <UserPlusIcon className="h-5 w-5" />,
+    path: "/administradores",
+  },
+  {
+    title: "Publicidad",
+    icon: <MegaphoneIcon className="h-5 w-5" />,
+    path: "/publicidad",
+  },
+  {
+    title: "Pedidos",
+    icon: <UserIcon className="h-5 w-5" />,
+    path: "/pedidos",
+  },
+  {
+    title: "Ayudas",
+    icon: <UserIcon className="h-5 w-5" />,
+    path: "/",
+  },
+];
 
 const SideBar = forwardRef<HTMLDivElement, SidBarProps>(({ showNav }, ref) => {
   const router = useRouter();
+  const [subMenuOpen, setSubMenuOpen] = useState(false);
+
+  const handleSubMenuClick = () => {
+    setSubMenuOpen(!subMenuOpen);
+  };
 
   return (
     <div ref={ref} className="fixed z-20 w-56 h-full bg-emerald-400 shadow-sm">
@@ -25,111 +76,45 @@ const SideBar = forwardRef<HTMLDivElement, SidBarProps>(({ showNav }, ref) => {
       </div>
 
       <div className="flex flex-col">
-        <Link href="/">
+        {Menus.map((menuItem, index) => (
           <div
-            className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${router.pathname == "/billing"
-              ? "bg-slate-400"
-              : "text-white hover:bg-white hover:text-emerald-400"
-              }`}
+            key={index}
+            className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${
+              router.pathname == "/billing"
+                ? "bg-slate-400"
+                : "text-white hover:bg-white hover:text-emerald-400"
+            }`}
           >
-            <div className="mr-2">
-              <HomeIcon className="h-5 w-5" />
-            </div>
+            <div className="mr-2">{menuItem.icon}</div>
             <div>
-              <p>Home</p>
+              <p>{menuItem.title}</p>
             </div>
+            {menuItem.subMenuItems && (
+              <ChevronDownIcon
+                className={`h-5 w-5 ml-auto ${
+                  subMenuOpen ? "transform rotate-180" : ""
+                }`}
+                onClick={handleSubMenuClick}
+              />
+            )}
+            {menuItem.subMenuItems && subMenuOpen && (
+              <ul>
+                {menuItem.subMenuItems.map((subMenuItem, idx) => (
+                  <li
+                    key={idx}
+                    className="pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors"
+                  >
+                    <div className="mr-2">{subMenuItem.icon}</div>
+
+                    <div>
+                      <p>{subMenuItem.title}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
-        </Link>
-        <Link href="/usuarios">
-          <div
-            className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${router.pathname == "/billing"
-              ? "bg-white"
-              : "text-white hover:bg-white hover:text-emerald-400"
-              }`}
-          >
-            <div className="mr-2">
-              <UserIcon className="h-5 w-5" />
-            </div>
-            <div>
-              <p>Cliente</p>
-            </div>
-          </div>
-        </Link>
-        <Link href="/tiendas">
-          <div
-            className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${router.pathname == "/billing"
-              ? "bg-white"
-              : "text-white hover:bg-white hover:text-emerald-400"
-              }`}
-          >
-            <div className="mr-2">
-              <BuildingStorefrontIcon className="h-5 w-5" />
-            </div>
-            <div>
-              <p>Tiendas</p>
-            </div>
-          </div>
-        </Link>
-        <Link href="/administradores">
-          <div
-            className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${router.pathname == "/billing"
-              ? "bg-white"
-              : "text-white hover:bg-white hover:text-emerald-400"
-              }`}
-          >
-            <div className="mr-2">
-              <UserPlusIcon className="h-5 w-5" />
-            </div>
-            <div>
-              <p>Administradores</p>
-            </div>
-          </div>
-        </Link>
-        <Link href="/publicidad">
-          <div
-            className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${router.pathname == "/billing"
-              ? "bg-white"
-              : "text-white hover:bg-white hover:text-emerald-400"
-              }`}
-          >
-            <div className="mr-2">
-              <MegaphoneIcon className="h-5 w-5" />
-            </div>
-            <div>
-              <p>Publicidad</p>
-            </div>
-          </div>
-        </Link>
-        <Link href="/pedidos">
-          <div
-            className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${router.pathname == "/billing"
-              ? "bg-white"
-              : "text-white hover:bg-white hover:text-emerald-400"
-              }`}
-          >
-            <div className="mr-2">
-              <UserIcon className="h-5 w-5" />
-            </div>
-            <div>
-              <p>Pedidos</p>
-            </div>
-          </div>
-        </Link>
-        <Link href="/Usuarios">
-          <div
-            className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${router.pathname == "/billing"
-              ? "bg-white"
-              : "text-white hover:bg-white hover:text-emerald-400"
-              }`}
-          >
-            <div className="mr-2">
-              <UserIcon className="h-5 w-5" />
-            </div>
-            <div>
-              <p>Ayudas</p>
-            </div>
-          </div>
-        </Link>
+        ))}
       </div>
     </div>
   );

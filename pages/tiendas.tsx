@@ -1,11 +1,11 @@
 import React from "react";
-import { useState } from 'react';
+import { useState } from "react";
 import { Input } from "@nextui-org/react";
 import { FaUserCircle } from "react-icons/fa";
 import { Table } from "../components/Table";
 import Container from "../components/usuarios/Container";
 import useStore from "../hooks/useStore";
-import * as Yup from 'yup';
+import * as Yup from "yup";
 import { Form as FormikForm, Formik, Field } from "formik";
 import { tiendaDefaultValues } from "../components/tiendas/tiendaHelper";
 import { BiEditAlt, BiTrash } from "react-icons/bi";
@@ -60,23 +60,21 @@ const tiendaFormSchema = Yup.object().shape({
     facebook: Yup.string().required("Campo requerido"),
     instagram: Yup.string().required("Campo requerido"),
     twitter: Yup.string().required("Campo requerido"),
-
 });
 
 const Tiendas = () => {
-    const [searchValue, setSearchValue] = useState('');
-    const isSubmitting = false;
-    const { tiendas = [] } = useStore({
-        queryParams: {
-            search: searchValue,
-        }
-    })
+  const [searchValue, setSearchValue] = useState("");
+  const isSubmitting = false;
+  const { tiendas = [] } = useStore({
+    queryParams: {
+      search: searchValue,
+    },
+  });
 
-    const handleSubmit = (values, { setSubmitting }) => {
-        alert(JSON.stringify(values, null, 2));
-        setSubmitting(false);
-    };
-
+  const handleSubmit = (values, { setSubmitting }) => {
+    alert(JSON.stringify(values, null, 2));
+    setSubmitting(false);
+  };
     return (
         <div>
             <p className="text-gray-700 text-3xl mb-10 font-bold">Tiendas</p>
@@ -282,10 +280,9 @@ const Tiendas = () => {
               key:  tienda.storeId,
               actions: 'actions',
             }))}
-          /> 
-            </div>
-        </div >
-    );
+            /> 
+          </div>
+    </div>
+  );
 };
-
 export default Tiendas;
