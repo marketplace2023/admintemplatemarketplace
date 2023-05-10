@@ -29,7 +29,7 @@ export interface Tienda {
     phone: string;
     emailAddress: string;
     descripcionCorta: string;
-    facebbok: string;
+    facebook: string;
     instagram: string;
     twitter: string;
     whatsapp: string;

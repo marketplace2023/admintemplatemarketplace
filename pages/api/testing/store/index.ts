@@ -12,7 +12,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Tienda
             phone: "+584149498382",
             emailAddress: "licdafeliciajardim0305@gmail.com",
             descripcionCorta: "La descripción del negocio generalmente se incluye inmediatamente después del resumen ejecutivo en la mayoría de los planes de negocios.",
-            facebbok: "LaAventura",
+            facebook: "LaAventura",
             instagram: "@LaAventura",
             twitter: "@LaAventura",
             whatsapp: "+584145263620"
@@ -26,7 +26,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Tienda
             phone: "+584149498382",
             emailAddress: "licdafeliciajardim0305@gmail.com",
             descripcionCorta: "La descripción del negocio generalmente se incluye inmediatamente después del resumen ejecutivo en la mayoría de los planes de negocios.",
-            facebbok: "LaAventura",
+            facebook: "LaAventura",
             instagram: "@LaAventura",
             twitter: "@LaAventura",
             whatsapp: "+584145263620"

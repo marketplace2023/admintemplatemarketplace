@@ -8,7 +8,43 @@ import useUsuario from "../hooks/useUsuario";
 import * as Yup from 'yup';
 import { Form as FormikForm, Formik, Field } from "formik";
 import { usuarioDefaultValues } from "../components/usuarios/usuarioHelper";
+import { BiEditAlt, BiTrash } from "react-icons/bi";
+import Image from 'next/image';
 
+const columns = [
+  {
+    headerName: 'FOTO', field: 'userFoto', renderCell: (user) =>
+
+      <div className="relative h-10 w-10">
+        <Image
+          className="h-full w-full rounded-full object-cover object-center"
+          src={user.userFoto}
+          alt="login"
+          width={100}
+          height={100}
+        />
+      </div>
+  },
+  { headerName: 'LOGIN', field: 'userLogin' },
+  { headerName: 'NOMBRE', field: 'userFirstName' },
+  { headerName: 'APELLIDO', field: 'userLastName' },
+  { headerName: 'CORREO ELECTRÓNICO', field: 'emailAddress' },
+  { headerName: 'TELÉFONO', field: 'phone' },
+  { headerName: 'ROL', field: 'roles' },
+  {
+    headerName: 'ACTIONS', field: 'actions', renderCell: (admin) => <div className="flex">
+      <div
+        className="cursor-pointer text-blue-600 hover:text-blue-200"
+      // onClick={() => setSelectedUser(admin)}
+      >
+        <BiEditAlt style={{ fontSize: '2em', marginLeft: '20px' }} />
+      </div>
+      <div className="cursor-pointer text-red-600 hover:text-red-200">
+        <BiTrash style={{ fontSize: '2em', marginLeft: '20px' }} />
+      </div>
+    </div>
+  }
+]
 const usuarioFormSchema = Yup.object().shape({
   userFoto: Yup.string().required("Campo requerido"),
   userLogin: Yup.string().required("Campo requerido").min(3, "El nombre del login tiene que tener al menos un carácter").max(100, "El nombre del login no puede superar los 100 carácteres"),
@@ -59,7 +95,7 @@ const Usuarios = () => {
                   <p className="m-auto text-center cursor-pointer hover:text-blue-600">
                     Subir Foto
                   </p>
-                </label>
+                </label> 
               </div>
               <div className=" w-full p-6 ">
                 <div className="grid grid-cols-3 gap-10">
