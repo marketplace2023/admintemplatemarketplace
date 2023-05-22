@@ -12,7 +12,8 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Usuari
             phone: "+584149498382",
             emailAddress: "licdafeliciajardim0305@gmail.com",
             addressUser: "Guacara centro calle plaza",
-            roles: "Admin"
+            roles: "Admin",
+            userPassword: "",
         },
         {
             userId: 2,
@@ -23,7 +24,8 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Usuari
             phone: "+584249497403",
             emailAddress: "aleperez541@gmail.com",
             addressUser: "Valencia San Diego calle 3-2 Sol",
-            roles: "Cliente"
+            roles: "Cliente",
+            userPassword: "",
         },
         {
             userId: 3,
@@ -34,7 +36,8 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Usuari
             phone: "+584149498382",
             emailAddress: "felipelopez5@gmail.com",
             addressUser: "Guacara centro calle plaza",
-            roles: "Admin"
+            roles: "Admin",
+            userPassword: "",
         },
         {
             userId: 4,
@@ -45,9 +48,9 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Usuari
             phone: "+584249497403",
             emailAddress: "aandres41@gmail.com",
             addressUser: "Valencia San Diego calle 3-2 Sol",
-            roles: "Cliente"
-        },
-        {
+            roles: "Cliente",
+            userPassword: "",
+        },{
             userId: 5,
             userFoto: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
             userLogin: "Francisco",
@@ -56,7 +59,8 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Usuari
             phone: "+584268956230",
             emailAddress: "franciscolara@gmail.com",
             addressUser: "Guacara centro calle plaza",
-            roles: "Admin"
+            roles: "Admin",
+            userPassword: "",
         },
         {
             userId: 6,
@@ -67,7 +71,8 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Usuari
             phone: "+584269872036",
             emailAddress: "lperez@gmail.com",
             addressUser: "Valencia San Diego calle 3-2 Sol",
-            roles: "Cliente"
+            roles: "Cliente",
+            userPassword: "",
         }
         ,
         {
@@ -79,7 +84,8 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Usuari
             phone: "+584125697103",
             emailAddress: "mariaj@gmail.com",
             addressUser: "Guacara centro calle plaza",
-            roles: "Admin"
+            roles: "Admin",
+            userPassword: "",
         },
         {
             userId: 8,
@@ -90,7 +96,8 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Usuari
             phone: "+584249497403",
             emailAddress: "mperez541@gmail.com",
             addressUser: "Valencia San Diego calle 3-2 Sol",
-            roles: "Cliente"
+            roles: "Cliente",
+            userPassword: "",
         }
     ]);
 }

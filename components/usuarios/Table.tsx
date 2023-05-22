@@ -3,6 +3,7 @@ import { Table as NextUITable } from "@nextui-org/react";
 import { BiEditAlt, BiTrash } from "react-icons/bi";
 import { Usuario } from '../../types/interfaces';
 import { ModalUsuarioEditar } from "./ModalUsuarioEditar";
+import Image from "next/image";
 
 type TableProps = {
   usuarios: Usuario[];
@@ -39,10 +40,10 @@ export const Table = (props: TableProps) => {
         {(usuario) => <NextUITable.Row key={usuario.userId} >
           <NextUITable.Cell>
             <div className="relative h-10 w-10">
-              <img
+              <Image
                 className="h-full w-full rounded-full object-cover object-center"
                 src={usuario.userFoto}
-                alt=""
+                alt="sdsd"
               />
             </div>
           </NextUITable.Cell>
