@@ -1,4 +1,4 @@
-import { forwardRef, LegacyRef, useState } from "react";
+import { forwardRef, ReactNode, useState } from "react";
 import Link from "next/link";
 import {
   HomeIcon,
@@ -6,66 +6,66 @@ import {
   BuildingStorefrontIcon,
   UserPlusIcon,
   MegaphoneIcon,
-  ChevronDownIcon,
+  MinusIcon,
 } from "@heroicons/react/24/solid";
 import { useRouter } from "next/router";
-
-type MenuItem = {
-  title: string;
-  icon: JSX.Element;
-  subMenuItems?: MenuItem[];
-  path: string;
-};
 
 type SidBarProps = {
   showNav: boolean;
 };
 
-const Menus: MenuItem[] = [
+type MenuItem = {
+  label: string;
+  icon: ReactNode;
+  path: string;
+  children?: MenuItem[];
+};
+
+const menuItems: MenuItem[] = [
   {
-    title: "Home",
+    label: "Home",
+    path: "/",
     icon: <HomeIcon className="h-5 w-5" />,
+  },
+  {
+    label: "Usuario",
     path: "/",
-  },
-  {
-    title: "Cliente",
     icon: <UserIcon className="h-5 w-5" />,
-    path: "/usuarios",
+    children: [
+      {
+        label: "Clientes",
+        path: "/usuarios",
+        icon: <MinusIcon className="h-5 w-5 mt-1 rounded" />,
+      },
+      {
+        label: "Tiendas",
+        path: "/tiendas",
+        icon: <MinusIcon className="h-5 w-5 mt-1 rounded" />,
+      },
+    ],
   },
   {
-    title: "Tiendas",
-    icon: <BuildingStorefrontIcon className="h-5 w-5" />,
-    path: "/tiendas",
-  },
-  {
-    title: "Administradores",
-    icon: <UserPlusIcon className="h-5 w-5" />,
-    path: "/administradores",
-  },
-  {
-    title: "Publicidad",
+    label: "Ayudas",
+    path: "/ayudas",
     icon: <MegaphoneIcon className="h-5 w-5" />,
-    path: "/publicidad",
-  },
-  {
-    title: "Pedidos",
-    icon: <UserIcon className="h-5 w-5" />,
-    path: "/pedidos",
-  },
-  {
-    title: "Ayudas",
-    icon: <UserIcon className="h-5 w-5" />,
-    path: "/",
+    // children: [
+    //   {
+    //     label: "Contenidos",
+    //     path: "/subayuda",
+    //     icon: <MinusIcon className="h-5 w-5 mt-1 rounded" />,
+    //   },
+    //   {
+    //     label: "Tópicos",
+    //     path: "/subayuda2",
+    //     icon: <MinusIcon className="h-5 w-5 mt-1 rounded" />,
+    //   },
+    // ],
   },
 ];
 
 const SideBar = forwardRef<HTMLDivElement, SidBarProps>(({ showNav }, ref) => {
   const router = useRouter();
-  const [subMenuOpen, setSubMenuOpen] = useState(false);
-
-  const handleSubMenuClick = () => {
-    setSubMenuOpen(!subMenuOpen);
-  };
+  const [expandedItem, setExpandedItem] = useState<string | null>(null);
 
   return (
     <div ref={ref} className="fixed z-20 w-56 h-full bg-emerald-400 shadow-sm">
@@ -76,45 +76,60 @@ const SideBar = forwardRef<HTMLDivElement, SidBarProps>(({ showNav }, ref) => {
       </div>
 
       <div className="flex flex-col">
-        {Menus.map((menuItem, index) => (
-          <div
-            key={index}
-            className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors ${
-              router.pathname == "/billing"
-                ? "bg-slate-400"
-                : "text-white hover:bg-white hover:text-emerald-400"
-            }`}
-          >
-            <div className="mr-2">{menuItem.icon}</div>
-            <div>
-              <p>{menuItem.title}</p>
-            </div>
-            {menuItem.subMenuItems && (
-              <ChevronDownIcon
-                className={`h-5 w-5 ml-auto ${
-                  subMenuOpen ? "transform rotate-180" : ""
-                }`}
-                onClick={handleSubMenuClick}
-              />
-            )}
-            {menuItem.subMenuItems && subMenuOpen && (
-              <ul>
-                {menuItem.subMenuItems.map((subMenuItem, idx) => (
-                  <li
-                    key={idx}
-                    className="pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors"
-                  >
-                    <div className="mr-2">{subMenuItem.icon}</div>
+        {menuItems.map((menuItem, i) => {
+          const hasChilren = Array.isArray(menuItem.children);
+          const RootElement = hasChilren ? "div" : Link;
+          const href = hasChilren ? undefined : menuItem.path;
+          const handleMenuItemClicked = () => {
+            setExpandedItem((prevLabel) =>
+              prevLabel === menuItem.label ? null : menuItem.label
+            );
+          };
 
-                    <div>
-                      <p>{subMenuItem.title}</p>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-        ))}
+          return (
+            <RootElement
+              key={i}
+              href={href}
+              onClick={hasChilren ? handleMenuItemClicked : undefined}
+            >
+              <div
+                className={`pl-6 py-3 rounded mx-2 text-center cursor-pointer mb-3 flex items-center transition-colors ${
+                  router.pathname == "/billing"
+                    ? "bg-slate-400"
+                    : "text-white hover:bg-white hover:text-emerald-400"
+                }`}
+              >
+                <div className="mr-2">{menuItem.icon}</div>
+                <div>
+                  <p>{menuItem.label}</p>
+                </div>
+              </div>
+              {hasChilren && expandedItem === menuItem.label && (
+                <div className="mx-4">
+                  <ul>
+                    {menuItem.children.map((child, childIndex) => (
+                      <li
+                        key={childIndex}
+                        className={`pl-6 py-3 rounded mx-2 text-center cursor-pointer mb-3 flex items-center transition-colors ${
+                          router.pathname == child.path
+                            ? "bg-white"
+                            : "text-white hover:bg-white hover:text-emerald-400"
+                        }`}
+                      >
+                        <Link href={child.path}>
+                          <div className="flex">
+                            {child.icon}
+                            <p>{child.label}</p>
+                          </div>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </RootElement>
+          );
+        })}
       </div>
     </div>
   );

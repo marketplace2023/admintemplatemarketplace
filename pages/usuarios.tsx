@@ -1,20 +1,21 @@
 import React from "react";
-import { useState } from 'react';
+import { useState } from "react";
 import Container from "../components/usuarios/Container";
 import { Input } from "@nextui-org/react";
 import { FaUserCircle } from "react-icons/fa";
 import { Table } from "../components/usuarios/Table";
 import useUsuario from "../hooks/useUsuario";
-import * as Yup from 'yup';
+import * as Yup from "yup";
 import { Form as FormikForm, Formik, Field } from "formik";
 import { usuarioDefaultValues } from "../components/usuarios/usuarioHelper";
 import { BiEditAlt, BiTrash } from "react-icons/bi";
-import Image from 'next/image';
+import Image from "next/image";
 
 const columns = [
   {
-    headerName: 'FOTO', field: 'userFoto', renderCell: (user) =>
-
+    headerName: "FOTO",
+    field: "userFoto",
+    renderCell: (user) => (
       <div className="relative h-10 w-10">
         <Image
           className="h-full w-full rounded-full object-cover object-center"
@@ -24,46 +25,68 @@ const columns = [
           height={100}
         />
       </div>
+    ),
   },
-  { headerName: 'LOGIN', field: 'userLogin' },
-  { headerName: 'NOMBRE', field: 'userFirstName' },
-  { headerName: 'APELLIDO', field: 'userLastName' },
-  { headerName: 'CORREO ELECTRÓNICO', field: 'emailAddress' },
-  { headerName: 'TELÉFONO', field: 'phone' },
-  { headerName: 'ROL', field: 'roles' },
+  { headerName: "LOGIN", field: "userLogin" },
+  { headerName: "NOMBRE", field: "userFirstName" },
+  { headerName: "APELLIDO", field: "userLastName" },
+  { headerName: "CORREO ELECTRÓNICO", field: "emailAddress" },
+  { headerName: "TELÉFONO", field: "phone" },
+  { headerName: "ROL", field: "roles" },
   {
-    headerName: 'ACTIONS', field: 'actions', renderCell: (admin) => <div className="flex">
-      <div
-        className="cursor-pointer text-blue-600 hover:text-blue-200"
-      // onClick={() => setSelectedUser(admin)}
-      >
-        <BiEditAlt style={{ fontSize: '2em', marginLeft: '20px' }} />
+    headerName: "ACTIONS",
+    field: "actions",
+    renderCell: (admin) => (
+      <div className="flex">
+        <div
+          className="cursor-pointer text-blue-600 hover:text-blue-200"
+          // onClick={() => setSelectedUser(admin)}
+        >
+          <BiEditAlt style={{ fontSize: "2em", marginLeft: "20px" }} />
+        </div>
+        <div className="cursor-pointer text-red-600 hover:text-red-200">
+          <BiTrash style={{ fontSize: "2em", marginLeft: "20px" }} />
+        </div>
       </div>
-      <div className="cursor-pointer text-red-600 hover:text-red-200">
-        <BiTrash style={{ fontSize: '2em', marginLeft: '20px' }} />
-      </div>
-    </div>
-  }
-]
+    ),
+  },
+];
 const usuarioFormSchema = Yup.object().shape({
   userFoto: Yup.string().required("Campo requerido"),
-  userLogin: Yup.string().required("Campo requerido").min(3, "El nombre del login tiene que tener al menos un carácter").max(100, "El nombre del login no puede superar los 100 carácteres"),
-  userFirstName: Yup.string().required("Campo requerido").min(3, "El nombre tiene que tener al menos un carácter").max(100, "El nombre no puede superar los 100 carácteres"),
-  userLastName: Yup.string().required("Campo requerido").min(3, "El apellido tiene que tener al menos un carácter").max(100, "El apellido no puede superar los 100 carácteres"),
-  phone: Yup.string().matches(/^[+0-9]+$/, ("Debe ser +000000000000")).required("Campo requerido").min(11, ("El número tiene que ser mayor a 11")),
-  emailAddress: Yup.string().email("El email no tiene un formato válido").required("Campo requerido"),
-  addressUser: Yup.string().required("Campo requerido").min(3, "La dirección tiene que tener al menos un carácter").max(100, "la dirección no puede superar los 100 carácteres"),
+  userLogin: Yup.string()
+    .required("Campo requerido")
+    .min(3, "El nombre del login tiene que tener al menos un carácter")
+    .max(100, "El nombre del login no puede superar los 100 carácteres"),
+  userFirstName: Yup.string()
+    .required("Campo requerido")
+    .min(3, "El nombre tiene que tener al menos un carácter")
+    .max(100, "El nombre no puede superar los 100 carácteres"),
+  userLastName: Yup.string()
+    .required("Campo requerido")
+    .min(3, "El apellido tiene que tener al menos un carácter")
+    .max(100, "El apellido no puede superar los 100 carácteres"),
+  phone: Yup.string()
+    .matches(/^[+0-9]+$/, "Debe ser +000000000000")
+    .required("Campo requerido")
+    .min(11, "El número tiene que ser mayor a 11"),
+  emailAddress: Yup.string()
+    .email("El email no tiene un formato válido")
+    .required("Campo requerido"),
+  addressUser: Yup.string()
+    .required("Campo requerido")
+    .min(3, "La dirección tiene que tener al menos un carácter")
+    .max(100, "la dirección no puede superar los 100 carácteres"),
   roles: Yup.string().required("Campo requerido"),
 });
 
 const Usuarios = () => {
-  const [searchValue, setSearchValue] = useState('');
+  const [searchValue, setSearchValue] = useState("");
   const isSubmitting = false;
   const { usuarios = [] } = useUsuario({
     queryParams: {
       search: searchValue,
-    }
-  })
+    },
+  });
 
   const handleSubmit = (values, { setSubmitting }) => {
     alert(JSON.stringify(values, null, 2));
@@ -95,7 +118,7 @@ const Usuarios = () => {
                   <p className="m-auto text-center cursor-pointer hover:text-blue-600">
                     Subir Foto
                   </p>
-                </label> 
+                </label>
               </div>
               <div className=" w-full p-6 ">
                 <div className="grid grid-cols-3 gap-10">
@@ -194,7 +217,6 @@ const Usuarios = () => {
                     helperText={errors?.emailAddress}
                     helperColor={errors?.emailAddress ? "error" : null}
                   />
-
                 </div>
                 <div className="grid grid-cols-1 gap-10 pt-9">
                   <Field
@@ -223,16 +245,14 @@ const Usuarios = () => {
             disabled={isSubmitting}
             className="text-white bg-emerald-400 hover:bg-emerald-600 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
-            Enviar
+            Crear
           </button>
         </div>
-      </Container >
+      </Container>
       <div className=" mt-10">
-        <Table
-          usuarios={usuarios}
-        />
+        <Table usuarios={usuarios} />
       </div>
-    </div >
+    </div>
   );
 };
 
