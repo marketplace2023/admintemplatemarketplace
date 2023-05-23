@@ -3,7 +3,7 @@ import { useState } from "react";
 import Container from "../components/usuarios/Container";
 import { Input } from "@nextui-org/react";
 import { FaUserCircle } from "react-icons/fa";
-import { Table } from "../components/usuarios/Table";
+import { Table } from "../components/Table";
 import useUsuario from "../hooks/useUsuario";
 import * as Yup from "yup";
 import { Form as FormikForm, Formik, Field } from "formik";
@@ -250,10 +250,16 @@ const Usuarios = () => {
         </div>
       </Container>
       <div className=" mt-10">
-        <Table usuarios={usuarios} />
-      </div>
-    </div>
-  );
-};
-
+        <Table
+          columns={columns}
+          items={usuarios.map((usuarios) => ({
+            ...usuarios,
+            key: usuarios.userId,
+            actions: "actions",
+          }))}
+          />
+          </div>
+        </div>
+      );
+    };
 export default Usuarios;
