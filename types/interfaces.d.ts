@@ -34,3 +34,17 @@ export interface Tienda {
     twitter: string;
     whatsapp: string;
 };
+export interface Ayuda {
+    contectId: number;
+    contectCodigo: string;
+    contectTitle: string;
+    contectTexto: string;
+    contectTopic: string;
+};
+export interface Topico {
+    topicId: number;
+    topicCodigo: string;
+    topicTitle: string;
+    topicIcono: string;
+    topicTopic: string;
+}
